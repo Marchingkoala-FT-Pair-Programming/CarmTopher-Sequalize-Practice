@@ -1,6 +1,10 @@
 const { db, Bookmarker, Category } = require('./db/server');
 
 const seedDB = async () => {
+    // below force: true wipes the module each time
+    // the function seedDB is called
+    // giving us a fresh start
+    
     await db.sync({
         force: true
     })
