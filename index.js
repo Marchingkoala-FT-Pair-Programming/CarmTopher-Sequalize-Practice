@@ -32,7 +32,7 @@ app.get('/bookmarker', async (req,res,next)=>{
             (bm) => `
         <div class="main">
             <p>
-            <a href="/bookmarker/${bm.name}">${bm.name} - ${bm.category.name}</a>
+            <a href="${bm.url}">${bm.name} - ${bm.category.name}</a>
             </p>
         </div>
         `
@@ -47,26 +47,6 @@ app.get('/bookmarker', async (req,res,next)=>{
   }
 })
 
-app.get('/bookmarker/:name', async (req,res,next)=>{
-// below variable contentBM calls for an instance where the name matches
-// the name requested by our client
-
-try{
-    const bmName = req.params.name;
-    const contentBM = await Bookmarker.findAll({
-        attribute:['url'],
-        where: {
-          name : bmName
-      },
-    });
-// hmm.. I'm not sure why it's not receiving the correct url address
-// I'm getting undefined... 
-    res.send(`yay! This is a page for ${bmName}`)
-    console.log(contentBM)
-    } catch(error){
-        next(error);
-    }
-})
 
 app.use((err, req, res, next) => {
   console.log(err.stack);
