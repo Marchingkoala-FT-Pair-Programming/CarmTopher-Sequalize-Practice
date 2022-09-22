@@ -1,0 +1,15 @@
+
+
+p {
+    color: blue;
+    font-size: 24pt;
+    font-family:sans-serif;
+    text-align: center;
+    background-color:darkgrey;
+    margin: 5px;
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+}
