@@ -1,10 +1,15 @@
+const { set } = require('express/lib/application');
 const Sequelize = require('sequelize');
 const db = new Sequelize("postgres://localhost/bookmarker_database")
 
 const Bookmarker = db.define("bookmarker", {
     name: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        set(value) {
+            const uppercase = value.toUpperCase();
+            this.setDataValue('name', uppercase)
+        }
     },
     url:{
         type: Sequelize.STRING,
